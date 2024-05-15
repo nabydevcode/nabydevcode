@@ -2,7 +2,6 @@
 
 $eleves = [
     [
-
         'nom' => 'toure',
         'prenoms' => 'naby zakaria',
         'notes' => [16, 16, 20],
