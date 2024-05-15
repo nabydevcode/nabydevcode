@@ -7,4 +7,4 @@ $note2 = 13;
 
 $moyenne = ($note1 + $note2) / 2;
 
-echo "Bonjour " . $nom . $prenoms . " vous aviez eu " . $moyenne . " moyennne";
+echo 'Bonjour ' . $nom . ' ' . $prenoms . ' vous aviez eu ' . ' ' . $moyenne . ' ' . 'moyennne';
