@@ -18,11 +18,12 @@ $eleves = [
 // les creneaux d'ouverture 
 
 $heure = (int) readline('donner vore darriver : ');
-if (!((9 <= $heure && $heure <= 12) || (14 <= $heure && $heure <= 17))) {
-    echo " la pharmacie est fermé ";
+/* if (!((9 <= $heure && $heure <= 12) || (14 <= $heure && $heure <= 17))) */
+if ((9 > $heure || $heure > 12) && (14 > $heure || $heure > 17)) {
+    echo " le magasin sera  fermé ";
 } else {
 
-    echo " la pharmacie est ouverte";
+    echo "le magasin sera   ouvert";
 }
 /* $matiere = (string) readline('quelle matiere :');
 $notes1 = (int) readline('note1: ');
