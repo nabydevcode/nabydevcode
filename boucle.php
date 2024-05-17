@@ -114,9 +114,10 @@ if ($heureDouverture) {
 echo "le magasin  sera ouvert de";
 foreach ($creneaux as $k => $value) {
     if ($k > 0) {
-        echo "et de ";
+        echo "et de";
     }
     echo " {$value[0]} h à {$value[1]} h ";
+
 }
 // deuxieme partie 
 /* $heuresOverture = [];
