@@ -47,9 +47,6 @@ while ($sortie !== false) {
             continue;
         }
     }
-
-
-
 }
 
 echo " donner l'heure  d'ouverture du magasin \n";
