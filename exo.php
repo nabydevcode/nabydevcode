@@ -17,11 +17,10 @@ if (preg_match('/[A-Z]/', $mots) === 1) {
 
 $insultes = ['con', 'merde', 'pute'];
 foreach ($insultes as $insulte) {
-    $changer[] = str_repeat('*', strlen($insulte));
+    $changer[] = $insulte[0] . str_repeat('*', strlen($insulte) - 1);
 }
 $message = (string) readline("donner une phrase :");
-
-$replace = str_replace($insultes, $changer, $message);
+$replace = str_replace($insultes, $changer, $message, );
 echo "$replace \n";
 
 
