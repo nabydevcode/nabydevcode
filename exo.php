@@ -15,21 +15,15 @@ if (preg_match('/[A-Z]/', $mots) === 1) {
 } */
 //recherce  les mots d'insulte 
 
-$insultes = ['con', 'merde'];
-$message = (string) readline("donner une phrase :");
-$contientInsulte = false;
-
+$insultes = ['con', 'merde', 'pute'];
 foreach ($insultes as $insulte) {
-    if (strpos($message, $insulte) !== false) {
-        $contientInsulte = true;
-        break;
-    }
+    $changer[] = str_repeat('*', strlen($insulte));
 }
-if ($contientInsulte) {
-    echo " cette phrase contient une insulte ";
-} else {
-    echo " ce mots ne contient pas des insulte (: \n";
-}
+$message = (string) readline("donner une phrase :");
+
+$replace = str_replace($insultes, $changer, $message);
+echo "$replace \n";
+
 
 
 
