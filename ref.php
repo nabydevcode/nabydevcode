@@ -3,55 +3,67 @@
 
 // revision sur l'exos dhier bonne chance  je suis en developper web 
 
-// sur le creneaux
 
-$creneaux = [];
+//pour continuer ou pas 
+function demander_oui_non()
+{
+    while (true) {
 
-$sortie = true;
+        $reponse = (string) readline("taper o (o/O) pour quitter ou n(n/N pour quitter :)");
 
-while ($sortie !== false) {
+        if (strtolower($reponse) === 'o') {
+            return true;
+        } else if ((strtolower($reponse) === 'n')) {
 
-
-    echo "Donner les creneaux d'auverture du magasin \n ";
-    $debut = (int) readline("donner l'heure de debut :");
-    $fin = (int) readline("donner l'heure de fin ");
-    if ($debut >= $fin) {
-
-        echo " L'heure de debut ($debut) ne doit etre supperieur ou egal a l'heure de fin ($fin) \n  ";
-        continue;
-    } else {
-        $creneaux[] = [$debut, $fin];
-        echo " vous vouler continuer a donner les crenaux \n";
-
-        $action = '';
-        while (true) {
-            $action = (string) readline("taper (O/o) pour continuer sinon (N/n) pour quitter :");
-
-            if (strtolower($action) === 'n') {
-                $sotie = false;
-                break;
-            } else if (strtolower($action) === 'o') {
-                break;
-            } else {
-                echo " le choix doit etre entre (o/O) et (n/N). Veillez ressayer \n";
-            }
-        }
-
-        if ($action === 'n' || $action === 'N') {
-            $sorie = false;
-            break;
-        } else if ($action === 'O' || $action === 'o') {
-            continue;
-        } else {
-            echo " le choix doit etre entre (O/o) et (N/n)";
-            continue;
+            return false;
         }
     }
+
+}
+// demander les srenneaux d'ouverture 
+function demanderCreneaux($message = "donner les heuere d'ouvertures")
+{
+    echo $message . "\n";
+
+    while (true) {
+        $debut = (int) readline("donner l'heure de debut :");
+        if ($debut >= 0 && $debut <= 24) {
+            break;
+        }
+    }
+    while (true) {
+        $fin = (int) readline("donner l'heure de fin :");
+        if ($fin >= 0 && $fin <= 23 && $fin > $debut) {
+
+            break;
+        }
+    }
+    return [$debut, $fin];
 }
 
-echo " donner l'heure  d'ouverture du magasin \n";
-$heure = (int) readline("Heure d'ouverture :");
-$ok = false;
+
+
+
+// main du programme 
+
+function demanderScreneaux()
+{
+    $creneaux = [];
+    $continuer = true;
+    while ($continuer) {
+
+        $creneaux[] = demanderCreneaux();
+        $continuer = demander_oui_non();
+    }
+
+    return $creneaux;
+}
+
+
+print_r(demanderScreneaux());
+die();
+
+
 
 foreach ($creneaux as $value) {
     if ($heure >= $value[0] && $heure <= $value[1]) {

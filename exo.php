@@ -15,12 +15,17 @@ if (preg_match('/[A-Z]/', $mots) === 1) {
 } */
 //recherce  les mots d'insulte 
 
+
+
+
 $insultes = ['con', 'merde', 'pute'];
 foreach ($insultes as $insulte) {
     $changer[] = strtoupper($insulte[0]) . str_repeat('*', strlen($insulte) - 1);
 }
 $message = (string) readline("donner une phrase :");
 $replace = str_replace($insultes, $changer, $message, );
+
+echo $replace;
 
 $ok = false;
 foreach ($insultes as $value) {
@@ -32,6 +37,7 @@ foreach ($insultes as $value) {
 
 if ($ok) {
     echo " [desole votre message contient des gros mots] ";
+
 } else {
     echo "$replace \n";
 }
