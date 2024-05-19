@@ -44,7 +44,7 @@ function demanderCreneaux($message = "donner les heuere d'ouvertures")
 
 
 
-// main du programme 
+
 
 function demanderScreneaux()
 {
@@ -60,12 +60,13 @@ function demanderScreneaux()
 }
 
 
-print_r(demanderScreneaux());
-die();
+// main du programme 
+
+$horaire = demanderScreneaux();
 
 
-
-foreach ($creneaux as $value) {
+$heure = (int) readline("donner d'ouverture :");
+foreach ($horaire as $value) {
     if ($heure >= $value[0] && $heure <= $value[1]) {
         $ok = true;
         break;
@@ -80,7 +81,7 @@ if ($ok) {
 
 echo "******************************* \n";
 echo " le magasin sera ouvert de  ";
-foreach ($creneaux as $k => $value) {
+foreach ($horaire as $k => $value) {
     if ($k > 0) {
         echo "et de ";
     }
