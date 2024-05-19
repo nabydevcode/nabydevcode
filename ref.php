@@ -33,7 +33,6 @@ function demanderCreneaux($message = "donner les heuere d'ouvertures")
     while (true) {
         $fin = (int) readline("donner l'heure de fin :");
         if ($fin >= 0 && $fin <= 23 && $fin > $debut) {
-
             break;
         }
     }
@@ -84,7 +83,7 @@ foreach ($horaire as $k => $value) {
     if ($k > 0) {
         echo "et de ";
     }
-    echo "  {$value[0]} h  à {$value[1]} h ";
+    echo " {$value[0]} :h  à {$value[1]} :h ";
 }
 
 
