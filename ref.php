@@ -8,7 +8,6 @@
 function demander_oui_non()
 {
     while (true) {
-
         $reponse = (string) readline("taper o (o/O) pour quitter ou n(n/N pour quitter :)");
 
         if (strtolower($reponse) === 'o') {
