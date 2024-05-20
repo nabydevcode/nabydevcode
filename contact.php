@@ -1,6 +1,7 @@
 <?php
 
-$title = "contact";
+$title = "nous-contact";
+$nav = "contact";
 
 require ('header.php');
 ?>

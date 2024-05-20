@@ -1,5 +1,6 @@
 <?php
 $title = "home";
+$nav = "index";
 require ('header.php');
 ?>
 
