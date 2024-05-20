@@ -1,50 +1,25 @@
 <?php
+$title = "home";
+require ('header.php');
+?>
 
-$eleves = [
-    [
-        'nom' => 'toure',
-        'prenoms' => 'naby zakaria',
-        'notes' => [16, 16, 20],
-    ],
-    [
-        'nom' => 'conde',
-        'prenoms' => 'mohamed lamine',
-        'notes' => [18, 17, 20],
-    ],
-];
+<!-- Begin page content -->
+<main class="flex-shrink-0 mt-4">
+    <div class="container">
+        <h1 class="mt-5">Sticky footer with fixed navbar</h1>
+        <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and
+            CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code
+                class="small">main &gt; .container</code>.</p>
+        <p>Back to <a href="/docs/5.3/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
+    </div>
+</main>
 
-//echo "Bonjour " . ' ' . $eleves[1]['nom'] . ' ' . $eleves[1]['prenoms'] . ' ' . 'vous aviez eu ' . ' ' . (($eleves[1]['notes'][0] + $eleves[1]['notes'][1] + $eleves[1]['notes'][2]) / 3) . ' ' . 'de moyenne';
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+    <div class="container">
+        <span class="text-body-secondary">Place sticky footer content here.</span>
+    </div>
+    <?php
 
-// les creneaux d'ouverture 
+    require ('footer.php');
 
-$heure = (int) readline('donner vore darriver : ');
-/* if (!((9 <= $heure && $heure <= 12) || (14 <= $heure && $heure <= 17))) */
-if ((9 > $heure || $heure > 12) && (14 > $heure || $heure > 17)) {
-    echo " le magasin sera  fermé ";
-} else {
-
-    echo "le magasin sera   ouvert";
-}
-/* $matiere = (string) readline('quelle matiere :');
-$notes1 = (int) readline('note1: ');
-$notes2 = (int) readline('note2: ');
-
-$moyenne = (int) (($notes1 + $notes2)) / 2;
-
-if ($moyenne >= 10) {
-    echo " informations \n";
-    echo "Matiere: $matiere \n";
-    echo "Notes1: $notes1 \n";
-    echo "Notes2: $notes2 \n";
-    echo "Moyenne: $moyenne \n";
-    echo "vous avez la moyenne ";
-} elseif ($moyenne < 10) {
-    echo " informations";
-    echo "Matiere: $matiere \n";
-    echo "Notes1: $notes1 \n";
-    echo "Notes2: $notes2 \n";
-    echo "Moyenne: $moyenne \n";
-    echo " vous n'aviez pas la moyenne : $moyenne  ";
-} elseif ($moyenne == 0) {
-    echo "la valeur inconnu";
-} */
+    ?>
