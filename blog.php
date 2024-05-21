@@ -1,28 +1,88 @@
 <?php
-/* $parfums = [
-    'frais' => 3,
-    'chocolat' => 5,
-    'vanille' => 6
-]; */
-
 
 require ('header.php');
 require ('technique/traite.php');
 
+$ingrediens = [];
+$total = 0;
+
+
+foreach (['parfum', 'supplement'] as $name) {
+    if (isset($_GET[$name]) && !empty($_GET[$name])) {
+        $par = $_GET[$name];
+        $liste = $name . 's';
+        foreach ($par as $value) {
+            if (isset($$liste[$value])) {
+                $ingrediens[] = $value;
+                $total += $$liste[$value];
+            }
+        }
+
+    }
+}
+if (isset($_GET['cornet']) && !empty($_GET['cornet'])) {
+
+    $ingrediens[] = $_GET['cornet'];
+    $total += $cornets[$_GET['cornet']];
+
+}
+
+/* if (isset($_GET['supplement']) && !empty($_GET['supplement'])) {
+    $sups = $_GET['supplement'];
+    foreach ($sups as $sup) {
+        if (isset($supplements[$sup])) {
+            $ingrediens[] = $sup;
+            $total += $supplements[$sup];
+        }
+    }
+
+} */
+
+
+
+
+
+
 ?>
 
 
-<h1>
-    le jeux de devinette
-</h1>
-
 
 </div>
-<div class="container">
+<div class="container mt-2">
     <div class="row justify-content-center">
-        <div class="col-8">
+
+        <div class="col-6">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        Votre glace
+                    </div>
+
+                    <?php foreach ($ingrediens as $value):
+
+                        ?>
+                        <li>
+                            <?= $value ?>
+                        </li>
+                    <?php endforeach ?>
+                    Total:
+                    <?= $total ?> €
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-6">
+            <h2>
+                Composé votre Glace
+            </h2>
             <form action="#" method="GET">
-                <h4> Parfums:</h4>
+                <h4>Choisissez Votre Parfums:</h4>
                 <?php foreach ($parfums as $parfum => $prix): ?>
                     <div class="checkbox">
                         <label>
@@ -33,7 +93,7 @@ require ('technique/traite.php');
                     </div>
 
                 <?php endforeach ?>
-                <h4> Cornets:</h4>
+                <h4> Choisissez Votre Cornets:</h4>
                 <?php foreach ($cornets as $cornet => $prix): ?>
                     <div class="checkbox">
                         <label>
@@ -45,7 +105,7 @@ require ('technique/traite.php');
 
                 <?php endforeach ?>
 
-                <h4> supplement :</h4>
+                <h4> choisissez le supplement :</h4>
                 <?php foreach ($supplements as $supplement => $prix): ?>
                     <div class="checkbox">
                         <label>
@@ -59,24 +119,16 @@ require ('technique/traite.php');
                 <button type="submit" class="btn btn-primary">envoyer</button>
             </form>
         </div>
+
+
     </div>
 </div>
 
 
 
 
-<pre>
 
-  <?php
-  var_dump($_GET);
-  ?>
-</pre>
-<pre>
 
-  <?php
-  var_dump($_POST);
-  ?>
-</pre>
 <?php
 
 require ('footer.php');
