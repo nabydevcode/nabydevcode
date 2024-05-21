@@ -2,11 +2,8 @@
 
 require ('header.php');
 require ('technique/traite.php');
-
 $ingrediens = [];
 $total = 0;
-
-
 foreach (['parfum', 'supplement'] as $name) {
     if (isset($_GET[$name]) && !empty($_GET[$name])) {
         $par = $_GET[$name];
@@ -26,21 +23,6 @@ if (isset($_GET['cornet']) && !empty($_GET['cornet'])) {
     $total += $cornets[$_GET['cornet']];
 
 }
-
-/* if (isset($_GET['supplement']) && !empty($_GET['supplement'])) {
-    $sups = $_GET['supplement'];
-    foreach ($sups as $sup) {
-        if (isset($supplements[$sup])) {
-            $ingrediens[] = $sup;
-            $total += $supplements[$sup];
-        }
-    }
-
-} */
-
-
-
-
 
 
 ?>
