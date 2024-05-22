@@ -5,12 +5,10 @@ $ingrediens = [];
 $total = 0;
 foreach (['parfum', 'supplement', 'cornet'] as $name) {
     $par = $_GET[$name];
+    $liste = $name . 's';
     if (is_array($par)) {
-
         if (isset($par) && !empty($par)) {
-
             $liste = $name . 's';
-
             foreach ($par as $value) {
                 if (isset($$liste[$value])) {
                     $ingrediens[] = $value;
@@ -20,7 +18,6 @@ foreach (['parfum', 'supplement', 'cornet'] as $name) {
         }
     } else {
         if (!empty($par)) {
-            $liste = $name . 's';
             if (isset($$liste[$par])) {
                 $ingrediens[] = $par;
                 $total += $$liste[$par];
