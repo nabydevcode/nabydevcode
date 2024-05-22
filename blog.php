@@ -1,34 +1,36 @@
 <?php
-
 require ('header.php');
 require ('technique/traite.php');
 $ingrediens = [];
 $total = 0;
-foreach (['parfum', 'supplement'] as $name) {
-    if (isset($_GET[$name]) && !empty($_GET[$name])) {
-        $par = $_GET[$name];
-        $liste = $name . 's';
-        foreach ($par as $value) {
-            if (isset($$liste[$value])) {
-                $ingrediens[] = $value;
-                $total += $$liste[$value];
+foreach (['parfum', 'supplement', 'cornet'] as $name) {
+    $par = $_GET[$name];
+    if (is_array($par)) {
+
+        if (isset($par) && !empty($par)) {
+
+            $liste = $name . 's';
+
+            foreach ($par as $value) {
+                if (isset($$liste[$value])) {
+                    $ingrediens[] = $value;
+                    $total += $$liste[$value];
+                }
             }
         }
-
+    } else {
+        if (!empty($par)) {
+            $liste = $name . 's';
+            if (isset($$liste[$par])) {
+                $ingrediens[] = $par;
+                $total += $$liste[$par];
+            }
+        }
     }
-}
-if (isset($_GET['cornet']) && !empty($_GET['cornet'])) {
-
-    $ingrediens[] = $_GET['cornet'];
-    $total += $cornets[$_GET['cornet']];
 
 }
-
 
 ?>
-
-
-
 </div>
 <div class="container mt-2">
     <div class="row justify-content-center">
@@ -38,7 +40,7 @@ if (isset($_GET['cornet']) && !empty($_GET['cornet'])) {
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        Votre glace
+                        Votre glace :
                     </div>
 
                     <?php foreach ($ingrediens as $value):
@@ -54,9 +56,6 @@ if (isset($_GET['cornet']) && !empty($_GET['cornet'])) {
                 </div>
 
             </div>
-
-
-
         </div>
 
         <div class="col-6">
