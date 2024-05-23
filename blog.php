@@ -41,7 +41,6 @@ foreach (['parfum', 'supplement', 'cornet'] as $name) {
                     </div>
 
                     <?php foreach ($ingrediens as $value):
-
                         ?>
                         <li>
                             <?= $value ?>
@@ -49,7 +48,6 @@ foreach (['parfum', 'supplement', 'cornet'] as $name) {
                     <?php endforeach ?>
                     Total:
                     <?= $total ?> €
-
                 </div>
 
             </div>
