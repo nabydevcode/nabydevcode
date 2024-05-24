@@ -5,8 +5,15 @@ $nav = "contact";
 
 require ('header.php');
 require ('technique/crenneaux.php');
+require ('technique/traite.php');
 
 date_default_timezone_set('Europe/Paris');
+
+$heure = (int) date('G');
+$creneaux = SCRENNEAUX[date('N') - 1];
+
+$ouvert = ouverture($creneaux, $heure);
+
 
 
 ?>
@@ -27,28 +34,18 @@ date_default_timezone_set('Europe/Paris');
         </div>
         <div class="col-6">
             <h3> les heures d'ouvertures </h3>
-
-
-
-
-
-            <?php foreach (SCRENNEAUX as $key => $day): ?>
+            <?php if ($ouvert): ?>
+                <div class="alert alert-success">
+                    Le magain est ouvert
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger">
+                    Le magain est fermé
+                </div>
+            <?php endif ?>
+            <?php foreach (SEMAINE as $key => $day): ?>
                 <li>
-                    <?php if (empty($day[0]) && empty($day[1])): ?>
-                        <?= SEMAINE[$key] ?> : fermé
-                    <?php else:
-                        $debut = $day[0];
-                        $fin = $day[1];
-                        ?>
-                        <?php if (!empty($debut)): ?>
-                            <?= SEMAINE[$key] ?> ouvert de
-                            <?php echo " :$debut[0]: h à $debut[1]: h " ?>
-                        <?php endif ?>
-                        <?php if (!empty($fin)): ?>
-                            et de
-                            <?php echo "  $fin[0] :h  à $fin[1] :h  " ?>
-                        <?php endif ?>
-                    <?php endif; ?>
+                    <?= (horaire(SCRENNEAUX[$key])) ?>
                 </li>
             <?php endforeach ?>
         </div>

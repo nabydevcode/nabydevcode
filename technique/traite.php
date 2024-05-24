@@ -41,4 +41,55 @@ function radio(string $name, string $value, array $data): string
 
 
 
+function ouverture(array $cren, $heure): bool
+{
+    foreach ($cren as $value) {
+        if (!empty($value)) {
+            $debut = $value[0];
+            $fin = $value[1];
+            if ($heure >= $debut && $heure < $fin) {
+                return true;
+            }
+        }
 
+    }
+    return false;
+
+}
+
+
+
+function horaire(array $creneaux)
+{
+
+    if (empty($creneaux)) {
+        return 'fermé';
+    } else {
+        $phrase = [];
+        foreach ($creneaux as $value) {
+            $phrase[] = " de <strong> {$value[0]} h </strong>" . " à <strong> {$value[1]} h </strong> ";
+        }
+    }
+
+    var_dump($phrase);
+    return 'Ouvert' . implode(' et ', $phrase);
+
+}
+
+/* function horair(array $creneaux)
+{
+
+    if (empty($creneaux)) {
+        return 'fermé';
+    } else {
+        $phrase = [];
+        foreach ($creneaux as $value) {
+
+            $phrase[] = " de <strong> {$value[0]} h </strong>" . " à <strong> {$value[1]} h </strong> ";
+
+        }
+    }
+
+    return 'Ouvert' . implode(' et ', $phrase);
+
+} */
