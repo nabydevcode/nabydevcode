@@ -2,17 +2,21 @@
 
 $title = "nous-contact";
 $nav = "contact";
-
 require ('header.php');
 require ('technique/crenneaux.php');
 require ('technique/traite.php');
 
-date_default_timezone_set('Europe/Paris');
 
-$heure = (int) date('G');
-$creneaux = SCRENNEAUX[date('N') - 1];
 
-$ouvert = ouverture($creneaux, $heure);
+$heure = ameliorer(SCRENNEAUX);
+
+var_dump($heure);
+
+
+
+
+
+
 
 
 
@@ -34,20 +38,12 @@ $ouvert = ouverture($creneaux, $heure);
         </div>
         <div class="col-6">
             <h3> les heures d'ouvertures </h3>
-            <?php if ($ouvert): ?>
-                <div class="alert alert-success">
-                    Le magain est ouvert
-                </div>
-            <?php else: ?>
-                <div class="alert alert-danger">
-                    Le magain est fermé
-                </div>
-            <?php endif ?>
+
             <?php foreach (SEMAINE as $key => $day): ?>
-                <li>
-                    <?= (horaire(SCRENNEAUX[$key])) ?>
-                </li>
-            <?php endforeach ?>
+
+                <?= ameliorer(SCRENNEAUX[$key]) ?>
+
+            <?php endforeach; ?>
         </div>
     </div>
 

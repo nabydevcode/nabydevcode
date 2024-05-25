@@ -58,38 +58,18 @@ function ouverture(array $cren, $heure): bool
 }
 
 
-
-function horaire(array $creneaux)
+function ameliorer($creneaux)
 {
 
-    if (empty($creneaux)) {
+    if (count($creneaux) === 0) {
         return 'fermé';
-    } else {
-        $phrase = [];
-        foreach ($creneaux as $value) {
-            $phrase[] = " de <strong> {$value[0]} h </strong>" . " à <strong> {$value[1]} h </strong> ";
-        }
+    }
+    $phrase = [];
+    foreach ($creneaux as $value) {
+        $phrase[] = " de {$value[0]} à {$value[1]}";
+
     }
 
-    var_dump($phrase);
-    return 'Ouvert' . implode(' et ', $phrase);
-
+    return implode(' et ', $phrase);
 }
 
-/* function horair(array $creneaux)
-{
-
-    if (empty($creneaux)) {
-        return 'fermé';
-    } else {
-        $phrase = [];
-        foreach ($creneaux as $value) {
-
-            $phrase[] = " de <strong> {$value[0]} h </strong>" . " à <strong> {$value[1]} h </strong> ";
-
-        }
-    }
-
-    return 'Ouvert' . implode(' et ', $phrase);
-
-} */
