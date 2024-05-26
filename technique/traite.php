@@ -38,9 +38,6 @@ function radio(string $name, string $value, array $data): string
    HTML;
 }
 
-
-
-
 function ouverture(array $cren, $heure): bool
 {
     foreach ($cren as $value) {
@@ -58,7 +55,7 @@ function ouverture(array $cren, $heure): bool
 }
 
 
-function ameliorer($creneaux)
+function genererhoraire(array $creneaux)
 {
 
     if (count($creneaux) === 0) {
@@ -66,10 +63,20 @@ function ameliorer($creneaux)
     }
     $phrase = [];
     foreach ($creneaux as $value) {
-        $phrase[] = " de {$value[0]} à {$value[1]}";
-
+        $phrase[] = " de  <strong>{$value[0]}h  </strong>à   <strong>{$value[1]}h   </strong>";
     }
+    return 'Ouvert' . implode(' et ', $phrase);
+}
+function genererselete(array $creneaux)
+{
 
+    if (count($creneaux) === 0) {
+        return '1';
+    }
+    $phrase = [];
+    foreach ($creneaux as $value) {
+        $phrase[] = " {$value[0]} {$value[1]}";
+    }
     return implode(' et ', $phrase);
 }
 

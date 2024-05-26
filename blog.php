@@ -1,29 +1,37 @@
 <?php
 require ('header.php');
-require ('technique/traite.php');
+require_once ('technique/traite.php');
 $ingrediens = [];
 $total = 0;
 foreach (['parfum', 'supplement', 'cornet'] as $name) {
-    $par = $_GET[$name];
-    $liste = $name . 's';
-    if (is_array($par)) {
-        if (isset($par) && !empty($par)) {
-            $liste = $name . 's';
-            foreach ($par as $value) {
-                if (isset($$liste[$value])) {
-                    $ingrediens[] = $value;
-                    $total += $$liste[$value];
+    if (!empty($_GET[$name])) {
+        $par = $_GET[$name];
+        $liste = $name . 's';
+        if (is_array($par)) {
+            if (isset($par) && !empty($par)) {
+                $liste = $name . 's';
+                foreach ($par as $value) {
+                    if (isset($$liste[$value])) {
+                        $ingrediens[] = $value;
+                        $total += $$liste[$value];
+                    }
+                }
+            }
+        } else {
+            if (!empty($par)) {
+                if (isset($$liste[$par])) {
+                    $ingrediens[] = $par;
+                    $total += $$liste[$par];
                 }
             }
         }
-    } else {
-        if (!empty($par)) {
-            if (isset($$liste[$par])) {
-                $ingrediens[] = $par;
-                $total += $$liste[$par];
-            }
-        }
+
     }
+
+
+
+
+
 
 }
 
