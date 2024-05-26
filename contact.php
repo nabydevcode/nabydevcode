@@ -19,16 +19,13 @@ if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GE
 $creneaux = SCRENNEAUX[$jour - 1];
 $ouvert = ouverture($creneaux, $heure);
 
-
-
-
 if ($ouvert) {
     $color = 'green';
 } else {
     $color = 'red';
 }
 
-// les jours et heures 
+
 
 
 
@@ -66,8 +63,6 @@ if ($ouvert) {
                     voir si le magasin est ouvert
                 </button>
             </form>
-
-
             <?php if ($ouvert): ?>
                 <div class="alert alert-success">
                     le magasin est ouvert
