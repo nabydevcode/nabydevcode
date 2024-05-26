@@ -38,6 +38,20 @@ function radio(string $name, string $value, array $data): string
    HTML;
 }
 
+function selecte(string $name, $value, array $options)
+{
+    $html = [];
+    $k = 0;
+    foreach ($options as $key => $option) {
+        $attributes = $key == $value ? 'selected' : '';
+        $k = $key + 1;
+        $html[] = " <option  value='$k' $attributes> $option </option>";
+    }
+    return "<select class='form-control' name='$name'>" . implode($html);
+
+
+}
+
 function ouverture(array $cren, $heure): bool
 {
     foreach ($cren as $value) {

@@ -8,25 +8,30 @@ require ('technique/traite.php');
 
 date_default_timezone_set('Europe/Paris');
 
-$heure = (int) date('G');
-$jour = (int) date('N');
-$creneaux = SCRENNEAUX[date('N') - 1];
+if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GET['heure'])) {
+    $heure = (int) $_GET['heure'];
+    $jour = (int) $_GET['jour'];
+} else {
+
+    $heure = (int) date('G');
+    $jour = (int) date('N');
+}
+$creneaux = SCRENNEAUX[$jour - 1];
 $ouvert = ouverture($creneaux, $heure);
+
+
+
+
 if ($ouvert) {
     $color = 'green';
 } else {
     $color = 'red';
 }
 
-
-if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GET['heure'])) {
-
+// les jours et heures 
 
 
-    print_r($_GET);
 
-
-}
 
 
 ?>
@@ -48,26 +53,17 @@ if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GE
         <div class="col-6">
             <h3> les heures d'ouvertures </h3>
             <form action="" method="GET">
-                <select class="form-control" name="heure">
-                    <option value="">Choissisez le jour </option>
-                    <?php foreach (SEMAINE as $key => $value): ?>
-                        <option value="<?= $value ?>">
-                            <?= $value ?>
-                        </option>
-                    <?php endforeach ?>
-                </select>
-                <select name="heure" class="form-control">
-                    <option value="">Choissisez l'heure d'ouverture </option>
-                    <?php for ($i = 1; $i < 25; $i++): ?>
-                        <option value="<?= $i ?> ">
-                            <?= $i ?>h
-                        </option>
 
-                    <?php endfor ?>
-                </select>
 
-                <button type="submit" class="btn btn-success">
-                    envoyer
+                <div class="form-control">
+                    <?= selecte('jour', $jour, SEMAINE) ?>
+                </div>
+
+                <div class="form-group my-1">
+                    <input type="number" name="heure" placeholder=" donner heure ">
+                </div>
+                <button type="submit" class="btn btn-success my-2">
+                    voir si le magasin est ouvert
                 </button>
             </form>
 
