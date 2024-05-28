@@ -93,4 +93,14 @@ function genererselete(array $creneaux)
     }
     return implode(' et ', $phrase);
 }
-
+function read_csv($file_path)
+{
+    $data = [];
+    if (($handle = fopen($file_path, 'r')) !== false) {
+        while (($row = fgetcsv($handle)) !== false) {
+            $data[] = $row;
+        }
+        fclose($handle);
+    }
+    return $data;
+}
