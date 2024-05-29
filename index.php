@@ -31,8 +31,7 @@ if (isset($_POST['emails']) && !empty($_POST['emails'])) {
                 earum
                 placeat deleniti! Ullam, officia. Debitis maiores eligendi molestiae a laudantium dolores iste ut modi
                 repellendus.
-                Voluptate repudiandae, blanditiis enim dicta nemo nulla porro, distinctio debitis, quaerat repellat
-                animi rerum
+
 
             </p>
 
