@@ -6,6 +6,13 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
 
+
+
+il ya
+<?= $nombre ?> visite
+<?php if ($nombre > 1): ?>s
+<?php endif ?>total
+
 </body>
 
 </html>

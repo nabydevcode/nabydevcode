@@ -104,3 +104,35 @@ function read_csv($file_path)
     }
     return $data;
 }
+
+
+function vues_incrementer()
+{
+    $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur';
+    $file_jounalier = $file . '-' . date('y-m-d');
+    incrementer($file);
+    incrementer($file_jounalier);
+
+}
+function incrementer(string $fichier)
+{
+    $compteur = 1;
+    if (file_exists($fichier)) {
+        $compteur = (int) file_get_contents($fichier);
+        $compteur++;
+    }
+    file_put_contents($fichier, $compteur);
+}
+
+function reuperer_les_vues(): int
+{
+    $nombre = 0;
+    $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur';
+    if (!file_exists($file)) {
+        echo " le fichier n'existe pas ";
+    }
+    $nombre = (int) file_get_contents($file);
+
+    return $nombre;
+
+}
