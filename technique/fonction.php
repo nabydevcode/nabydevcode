@@ -6,3 +6,4 @@ require_once ('menu_fonction.php');
 <?= nav_item('/blog.php', 'Blog'); ?>
 <?= nav_item('/menu.php', 'menu'); ?>
 <?= nav_item('/dashabord.php', 'dashabord'); ?>
+<?= nav_item('/generale.php', 'generale'); ?>
