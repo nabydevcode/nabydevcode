@@ -13,7 +13,6 @@ $cornets = [
 $supplements = [
     'pepite de chocolate' => 1,
     'chantilly' => 0.5
-
 ];
 
 function checkbox(string $name, string $value, array $data): string
@@ -109,7 +108,7 @@ function read_csv($file_path)
 function vues_incrementer()
 {
     $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur';
-    $file_jounalier = $file . '-' . date('y-m-d');
+    $file_jounalier = $file . '-' . date('Y-m-d');
     incrementer($file);
     incrementer($file_jounalier);
 
@@ -132,13 +131,21 @@ function reuperer_les_vues(): int
         echo " le fichier n'existe pas ";
     }
     $nombre = (int) file_get_contents($file);
-
     return $nombre;
 
 }
-function par_mois(int $annee, int $mois)
+function vues_par_mois(int $annee, int $mois): int
 {
     $mois = str_pad($mois, 2, '0', STR_PAD_LEFT);
     $fichier = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur-' . $annee . '-' . $mois . '-' . '*';
-    var_dump(glob($fichier));
+    $fichiers = glob($fichier);
+    $total = 0;
+    foreach ($fichiers as $data) {
+        $total += (int) file_get_contents($data);
+    }
+    return $total;
+
 }
+
+
+

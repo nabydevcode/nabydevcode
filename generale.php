@@ -12,7 +12,8 @@ $mois_selection = empty($_GET['mois']) ? '' : $_GET['mois'];
 
 if ($annee_selction && $mois_selection) {
 
-    $nombre = par_mois($annee_selction, $mois_selection);
+    $nombre = vues_par_mois($annee_selction, $mois_selection);
+
 } else {
     $nombre = reuperer_les_vues();
 }
