@@ -5,10 +5,13 @@ require ('technique/traite.php');
 require ('header.php');
 require ('technique/crenneaux.php');
 
+
 $year = (int) date('Y');
 $mois = date('m');
-$annee_selction = empty($_GET['annee']) ? '' : (int) $_GET['annee'];
-$mois_selection = empty($_GET['mois']) ? '' : $_GET['mois'];
+$annee_selction = empty($_GET['annee']) ? $year : (int) $_GET['annee'];
+$mois_selection = empty($_GET['mois']) ? $mois : $_GET['mois'];
+
+$detail = detait_vues_par_mois($annee_selction, $mois_selection);
 
 if ($annee_selction && $mois_selection) {
 
@@ -54,6 +57,49 @@ if ($annee_selction && $mois_selection) {
                     <?= $nombre > 1 ? 's' : '' ?> total
                 </div>
             </div>
+
+
+            <?php if (isset($detail) && !empty($detail)): ?>
+                <h2> details de screneaux</h2>
+
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th>
+                                Année
+                            </th>
+                            <th>
+                                Mois
+                            </th>
+                            <th>
+                                Jour
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    <tbody>
+                        <?php foreach ($detail as $lines): ?>
+                            <tr>
+                                <td>
+                                    <?= $lines['annee'] ?>
+                                </td>
+                                <td>
+                                    <?= $lines['$mois'] ?>
+                                </td>
+                                <td>
+                                    <?= $lines['jour'] ?>
+                                </td>
+                                <td>
+                                    <?= $lines['total'] ?>
+                                </td>
+
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                    </thead>
+                </table>
+            <?php endif ?>
         </div>
     </div>
 </div>

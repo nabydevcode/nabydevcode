@@ -70,7 +70,6 @@ function ouverture(array $cren, $heure): bool
 
 function genererhoraire(array $creneaux)
 {
-
     if (count($creneaux) === 0) {
         return 'fermé';
     }
@@ -145,6 +144,25 @@ function vues_par_mois(int $annee, int $mois): int
     }
     return $total;
 
+}
+
+function detait_vues_par_mois(int $annee, int $mois): array
+{
+    $mois = str_pad($mois, 2, '0', STR_PAD_LEFT);
+    $fichier = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur-' . $annee . '-' . $mois . '-' . '*';
+    $fichiers = glob($fichier);
+    $visites = [];
+    foreach ($fichiers as $data) {
+        $parties = explode('-', basename($data));
+        $visites[] = [
+            'annee' => $parties[1],
+            '$mois' => $parties[2],
+            'jour' => $parties[3],
+            'total' => file_get_contents($data)
+        ];
+
+    }
+    return $visites;
 }
 
 
