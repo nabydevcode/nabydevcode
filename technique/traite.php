@@ -136,3 +136,9 @@ function reuperer_les_vues(): int
     return $nombre;
 
 }
+function par_mois(int $annee, int $mois)
+{
+    $mois = str_pad($mois, 2, '0', STR_PAD_LEFT);
+    $fichier = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'compteur-' . $annee . '-' . $mois . '-' . '*';
+    var_dump(glob($fichier));
+}

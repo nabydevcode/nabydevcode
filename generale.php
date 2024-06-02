@@ -4,11 +4,19 @@ $title = "generale";
 require ('technique/traite.php');
 require ('header.php');
 require ('technique/crenneaux.php');
-$nombre = reuperer_les_vues();
+
 $year = (int) date('Y');
 $mois = date('m');
-$mois_selection = empty($_GET['mois']) ? '' : (int) $_GET['mois'];
 $annee_selction = empty($_GET['annee']) ? '' : (int) $_GET['annee'];
+$mois_selection = empty($_GET['mois']) ? '' : $_GET['mois'];
+
+if ($annee_selction && $mois_selection) {
+
+    $nombre = par_mois($annee_selction, $mois_selection);
+} else {
+    $nombre = reuperer_les_vues();
+}
+
 ?>
 <div class="container">
     <h1> Deshabord de mon site</h1>
@@ -24,9 +32,8 @@ $annee_selction = empty($_GET['annee']) ? '' : (int) $_GET['annee'];
                         <?php if ($year - $i === $annee_selction): ?>
                             <div class="list-group">
                                 <?php foreach (MOIS as $key => $value): ?>
-
-                                    <a class="list-group-item <?= $mois === $mois_selection ? 'active' : ''; ?> "
-                                        href="generale.php?annee=<?= $annee_selction ?>& mois= <?= $key ?>">
+                                    <a class="list-group-item <?= $mois_selection === $key ? 'active' : ''; ?> "
+                                        href="generale.php?annee=<?= $annee_selction ?>&mois=<?= $key ?>">
                                         <?= $value ?>
                                     </a>
                                 <?php endforeach ?>
@@ -49,12 +56,6 @@ $annee_selction = empty($_GET['annee']) ? '' : (int) $_GET['annee'];
         </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <?php
 require ('footer.php') ?>
