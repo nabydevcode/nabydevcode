@@ -7,8 +7,6 @@ require_once ('header.php');
 require_once ('technique/crenneaux.php');
 
 
-
-
 $year = (int) date('Y');
 $mois = date('m');
 $annee_selction = empty($_GET['annee']) ? $year : (int) $_GET['annee'];
@@ -23,7 +21,6 @@ if ($annee_selction && $mois_selection) {
 } else {
     $nombre = reuperer_les_vues();
 }
-
 ?>
 <?php force_connecter_utilisateur(); ?>
 <div class="container">
