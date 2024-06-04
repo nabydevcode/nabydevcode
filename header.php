@@ -50,15 +50,11 @@ require_once ('fonction/auth.php');
                         <?php require ('technique/fonction.php') ?>
                     </ul>
                     <ul class="navbar-bar">
-
-
                         <?php if (is_connecte()): ?>
                             <li class="nav-item">
                                 <a href="/logout.php" class="nav-link">se deconnecter</a>
                             </li>
                         <?php endif ?>
-
-
                     </ul>
                 </div>
 

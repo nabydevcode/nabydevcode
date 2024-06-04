@@ -1,11 +1,10 @@
 <?php
-
-session_start();
+require_once ('fonction/auth.php');
+force_connecter_utilisateur();
 $title = "generale";
 require_once ('technique/traite.php');
 require_once ('header.php');
 require_once ('technique/crenneaux.php');
-require_once ('fonction/auth.php');
 
 
 

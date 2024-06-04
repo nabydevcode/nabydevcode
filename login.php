@@ -4,7 +4,6 @@ $titlte = "login";
 require_once ('header.php');
 require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
-
 $error = "";
 if (!empty($_POST['emails']) && !empty($_POST['password'])) {
     if ($_POST['emails'] === 'toure@gmail.com' && $_POST['password'] === 'toure') {
@@ -16,8 +15,6 @@ if (!empty($_POST['emails']) && !empty($_POST['password'])) {
     }
 }
 ?>
-
-
 <?php if ($error): ?>
     <div class="alert alert-success mt-2">
         <?= $error ?>
@@ -33,13 +30,7 @@ if (!empty($_POST['emails']) && !empty($_POST['password'])) {
         <input type="password" name="password" class="form-control " placeholder="votre de mots pass">
         <button type="submit" class="btn btn-primary mt-2"> Connecter</button>
     </form>
-
 </div>
-
-
-
-
 <?php
-
 require_once ('footer.php');
 ?>
