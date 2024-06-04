@@ -1,6 +1,18 @@
 <?php
 
 
+//fonction pour la connexion 
+
+function is_connecte()
+{
+    if (!empty($_SESSION['ouvert'])) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 function nav_item($lien, $titre): string
 {
     $classe = 'nav-item';

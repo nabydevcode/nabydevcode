@@ -1,3 +1,6 @@
+<?php
+require_once ('fonction/auth.php');
+?>
 <!doctype html>
 <html lang="en" class="h-100" data-bs-theme="auto">
 
@@ -46,8 +49,19 @@
                     <ul class="navbar-nav mr-auto ">
                         <?php require ('technique/fonction.php') ?>
                     </ul>
+                    <ul class="navbar-bar">
 
+
+                        <?php if (is_connecte()): ?>
+                            <li class="nav-item">
+                                <a href="/logout.php" class="nav-link">se deconnecter</a>
+                            </li>
+                        <?php endif ?>
+
+
+                    </ul>
                 </div>
+
             </div>
         </nav>
     </header>

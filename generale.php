@@ -1,9 +1,13 @@
 <?php
 
+session_start();
 $title = "generale";
-require ('technique/traite.php');
-require ('header.php');
-require ('technique/crenneaux.php');
+require_once ('technique/traite.php');
+require_once ('header.php');
+require_once ('technique/crenneaux.php');
+require_once ('fonction/auth.php');
+
+
 
 
 $year = (int) date('Y');
@@ -22,6 +26,7 @@ if ($annee_selction && $mois_selection) {
 }
 
 ?>
+<?php force_connecter_utilisateur(); ?>
 <div class="container">
     <h1> Deshabord de mon site</h1>
     <div class="row">
@@ -57,8 +62,6 @@ if ($annee_selction && $mois_selection) {
                     <?= $nombre > 1 ? 's' : '' ?> total
                 </div>
             </div>
-
-
             <?php if (isset($detail) && !empty($detail)): ?>
                 <h2> details de screneaux</h2>
 
