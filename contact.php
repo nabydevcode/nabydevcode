@@ -1,8 +1,10 @@
 <?php
 
+
+
 $title = "nous-contact";
 $nav = "contact";
-require ('header.php');
+
 require ('technique/crenneaux.php');
 require ('technique/traite.php');
 
@@ -28,9 +30,7 @@ if ($ouvert) {
 
 
 
-
-
-
+require ('header.php');
 ?>
 
 <div class="container">
