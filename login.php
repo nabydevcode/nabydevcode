@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $titlte = "login";
 require_once ('header.php');
 require_once ('technique/traite.php');
@@ -7,8 +7,9 @@ $nombre = reuperer_les_vues();
 $error = "";
 if (!empty($_POST['emails']) && !empty($_POST['password'])) {
     if ($_POST['emails'] === 'toure@gmail.com' && $_POST['password'] === 'toure') {
+        session_start();
         $_SESSION['ouvert'] = 1;
-        header('Location:/dashabord.php');
+        header('Location:/generale.php');
         $error = " vos données sont correctes";
     } else {
         $error = " vos donnés ne sont pas correctes ";
