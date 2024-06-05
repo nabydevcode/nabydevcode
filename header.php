@@ -1,6 +1,4 @@
 <?php
-
-require_once ('fonction/auth.php');
 ?>
 <!doctype html>
 <html lang="en" class="h-100" data-bs-theme="auto">

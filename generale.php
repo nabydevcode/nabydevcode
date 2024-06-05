@@ -2,9 +2,10 @@
 require_once ('fonction/auth.php');
 force_connecter_utilisateur();
 $title = "generale";
+
 require_once ('technique/traite.php');
-require_once ('header.php');
 require_once ('technique/crenneaux.php');
+require_once ('header.php');
 
 
 $year = (int) date('Y');
@@ -21,8 +22,10 @@ if ($annee_selction && $mois_selection) {
 } else {
     $nombre = reuperer_les_vues();
 }
+
+
 ?>
-<?php force_connecter_utilisateur(); ?>
+<?php ?>
 <div class="container">
     <h1> Deshabord de mon site</h1>
     <div class="row">
