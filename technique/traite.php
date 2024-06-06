@@ -15,6 +15,20 @@ $supplements = [
     'chantilly' => 0.5
 ];
 
+
+if (!function_exists('checkbox')) {
+    function checkbox(string $name, string $value, array $data): string
+    {
+        $attributes = '';
+        if (isset($data[$name]) && (in_array($value, $data[$name]))) {
+            $attributes .= 'checked';
+        }
+        return <<<HTML
+    <input type="checkbox" name="{$name}[]" value="$value" $attributes>
+   HTML;
+
+    }
+}
 function checkbox(string $name, string $value, array $data): string
 {
     $attributes = '';

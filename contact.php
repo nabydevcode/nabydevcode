@@ -1,6 +1,8 @@
 <?php
 require_once 'fonction/auth.php';
 force_connecter_utilisateur();
+require_once ('technique/traite.php');
+$nombre = reuperer_les_vues();
 
 $title = "nous-contact";
 $nav = "contact";
@@ -14,7 +16,6 @@ if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GE
     $heure = (int) $_GET['heure'];
     $jour = (int) $_GET['jour'];
 } else {
-
     $heure = (int) date('G');
     $jour = (int) date('N');
 }

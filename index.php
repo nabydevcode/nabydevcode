@@ -1,8 +1,13 @@
 <?php
+require_once 'fonction/auth.php';
+force_connecter_utilisateur();
+require_once ('technique/traite.php');
+$nombre = reuperer_les_vues();
 $title = "home";
 $nav = "index";
 require ('header.php');
 $error = "";
+$email = null;
 if (isset($_POST['emails']) && !empty($_POST['emails'])) {
 
     $email = filter_var($_POST['emails'], FILTER_VALIDATE_EMAIL);
