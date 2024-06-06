@@ -1,6 +1,6 @@
 <?php
-
-
+require_once 'fonction/auth.php';
+force_connecter_utilisateur();
 
 $title = "nous-contact";
 $nav = "contact";

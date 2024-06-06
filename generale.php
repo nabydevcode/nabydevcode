@@ -1,7 +1,12 @@
 <?php
+require_once 'fonction/auth.php';
+force_connecter_utilisateur(); // Assurez-vous que cette ligne est placée avant tout code nécessitant l'utilisateur connecté
+
 $title = "generale";
-require_once ('technique/traite.php');
-require_once ('technique/crenneaux.php');
+require_once 'technique/traite.php';
+require_once 'technique/crenneaux.php';
+require_once 'header.php';
+
 $year = (int) date('Y');
 $mois = date('m');
 $annee_selction = empty($_GET['annee']) ? $year : (int) $_GET['annee'];
@@ -10,15 +15,11 @@ $mois_selection = empty($_GET['mois']) ? $mois : $_GET['mois'];
 $detail = detait_vues_par_mois($annee_selction, $mois_selection);
 
 if ($annee_selction && $mois_selection) {
-
     $nombre = vues_par_mois($annee_selction, $mois_selection);
-
 } else {
     $nombre = reuperer_les_vues();
 }
-require_once ('header.php');
 ?>
-
 <div class="container">
     <h1> Deshabord de mon site</h1>
     <div class="row">

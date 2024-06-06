@@ -1,4 +1,6 @@
 <?php
+
+require_once ('fonction/auth.php');
 ?>
 <!doctype html>
 <html lang="en" class="h-100" data-bs-theme="auto">
@@ -36,6 +38,7 @@
 <body class="d-flex flex-column h-100">
 
     <header>
+        <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Mon site</a>
@@ -48,7 +51,11 @@
                         <?php require ('technique/fonction.php') ?>
                     </ul>
                     <ul class="navbar-bar">
-
+                        <?php if (is_connecte()): ?>
+                            <li class="nav-item">
+                                <a href="/logout.php" class="nav-link">se deconnecter</a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </div>
 
