@@ -5,7 +5,6 @@ $parfums = [
     ,
     'vanile' => 6
 ];
-
 $cornets = [
     'pot' => 2,
     'cornet' => 3,
@@ -16,6 +15,7 @@ $supplements = [
 ];
 
 
+// generer une formulaire checbox
 if (!function_exists('checkbox')) {
     function checkbox(string $name, string $value, array $data): string
     {
@@ -30,12 +30,7 @@ if (!function_exists('checkbox')) {
     }
 }
 
-
-
-
-// Ajoutez ici d'autres fonctions si nécessaire...
-
-
+//generer un formulaire raddio 
 
 if (!function_exists('radio')) {
     function radio(string $name, string $value, array $data): string
@@ -51,7 +46,7 @@ if (!function_exists('radio')) {
 }
 
 
-
+//generer un formulaire select
 if (!function_exists('selecte')) {
     function selecte(string $name, $value, array $options)
     {
@@ -69,7 +64,7 @@ if (!function_exists('selecte')) {
 }
 
 
-
+// Renseigner sur les heures d'ouvertures
 if (!function_exists('ouverture')) {
     function ouverture(array $cren, $heure): bool
     {
@@ -88,7 +83,7 @@ if (!function_exists('ouverture')) {
     }
 }
 
-
+// generer les hauraires d'ouvertures
 if (!function_exists('genererhoraire')) {
     function genererhoraire(array $creneaux)
     {
@@ -105,12 +100,10 @@ if (!function_exists('genererhoraire')) {
 }
 
 
+// 
 if (!function_exists('genererselete')) {
-
-
     function genererselete(array $creneaux)
     {
-
         if (count($creneaux) === 0) {
             return '1';
         }
@@ -143,7 +136,6 @@ if (!function_exists('vues_incrementer')) {
         $file_jounalier = $file . '-' . date('Y-m-d');
         incrementer($file);
         incrementer($file_jounalier);
-
     }
 
 }
@@ -203,7 +195,6 @@ if (!function_exists('detait_vues_par_mois')) {
                 'jour' => $parties[3],
                 'total' => file_get_contents($data)
             ];
-
         }
         return $visites;
     }
