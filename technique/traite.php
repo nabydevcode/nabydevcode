@@ -115,6 +115,7 @@ if (!function_exists('genererselete')) {
     }
 }
 
+// lire dans un  fichier csv
 if (!function_exists('read_csv')) {
     function read_csv($file_path)
     {
@@ -129,6 +130,8 @@ if (!function_exists('read_csv')) {
     }
 
 }
+
+// incrementer les vues en cas de visite d'un utilisateur par jour et par mois 
 if (!function_exists('vues_incrementer')) {
     function vues_incrementer()
     {
@@ -139,6 +142,7 @@ if (!function_exists('vues_incrementer')) {
     }
 
 }
+// incrementer les vues en cas de visite d'un utilisateur 
 if (!function_exists('incrementer')) {
 
     function incrementer(string $fichier)
@@ -151,8 +155,8 @@ if (!function_exists('incrementer')) {
         file_put_contents($fichier, $compteur);
     }
 }
+// le recuperer le nombres de vues dans un fichier par jour
 if (!function_exists('reuperer_les_vues')) {
-
     function reuperer_les_vues(): int
     {
         $nombre = 0;
@@ -165,6 +169,8 @@ if (!function_exists('reuperer_les_vues')) {
 
     }
 }
+
+//recuperer le nombres de vues  total dans le mois 
 if (!function_exists('vues_par_mois')) {
     function vues_par_mois(int $annee, int $mois): int
     {
@@ -176,10 +182,9 @@ if (!function_exists('vues_par_mois')) {
             $total += (int) file_get_contents($data);
         }
         return $total;
-
     }
-
 }
+// recuperer le nombre de vues dans un mois en detaille
 if (!function_exists('detait_vues_par_mois')) {
     function detait_vues_par_mois(int $annee, int $mois): array
     {
