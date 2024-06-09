@@ -3,15 +3,11 @@ require_once 'fonction/auth.php';
 force_connecter_utilisateur();
 require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
-
 $title = "nous-contact";
 $nav = "contact";
-
 require ('technique/crenneaux.php');
 require ('technique/traite.php');
-
 date_default_timezone_set('Europe/Paris');
-
 if (isset($_GET['jour'], $_GET['heure']) && !empty($_GET['jour']) && !empty($_GET['heure'])) {
     $heure = (int) $_GET['heure'];
     $jour = (int) $_GET['jour'];
@@ -27,13 +23,8 @@ if ($ouvert) {
 } else {
     $color = 'red';
 }
-
-
-
-
 require ('header.php');
 ?>
-
 <div class="container">
     <div class="row justify-content-end">
         <div class="col-6">
@@ -51,12 +42,9 @@ require ('header.php');
         <div class="col-6">
             <h3> les heures d'ouvertures </h3>
             <form action="" method="GET">
-
-
                 <div class="form-control">
                     <?= selecte('jour', $jour, SEMAINE) ?>
                 </div>
-
                 <div class="form-group my-1">
                     <input type="number" name="heure" placeholder=" donner heure ">
                 </div>
@@ -81,13 +69,9 @@ require ('header.php');
                     <?= genererhoraire((SCRENNEAUX[$key])) ?>
                 </li>
             <?php endforeach; ?>
-
         </div>
     </div>
-
 </div>
-
 <?php
-
 require ('footer.php');
 ?>

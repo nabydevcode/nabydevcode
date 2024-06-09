@@ -9,15 +9,12 @@ require ('header.php');
 $error = "";
 $email = null;
 if (isset($_POST['emails']) && !empty($_POST['emails'])) {
-
     $email = filter_var($_POST['emails'], FILTER_VALIDATE_EMAIL);
     $file = __DIR__ . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . date('m-d-y') . '.txt';
     file_put_contents($file, $email . PHP_EOL, FILE_APPEND);
 
 }
 ?>
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">

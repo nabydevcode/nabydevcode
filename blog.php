@@ -1,6 +1,9 @@
 <?php
-require ('header.php');
+require_once ('fonction/auth.php');
+force_connecter_utilisateur();
 require_once ('technique/traite.php');
+require ('header.php');
+$nombre = reuperer_les_vues();
 $ingrediens = [];
 $total = 0;
 foreach (['parfum', 'supplement', 'cornet'] as $name) {

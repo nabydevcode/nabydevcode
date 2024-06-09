@@ -1,5 +1,6 @@
 <?php
-
+require_once ('fonction/auth.php');
+force_connecter_utilisateur();
 $title = "deshabord";
 
 require ('header.php');

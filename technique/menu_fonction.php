@@ -3,8 +3,6 @@
 
 //fonction pour la connexion 
 
-
-
 function nav_item($lien, $titre): string
 {
     $classe = 'nav-item';

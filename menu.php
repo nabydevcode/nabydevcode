@@ -1,4 +1,7 @@
 <?php
+
+require_once ('fonction/auth.php');
+force_connecter_utilisateur();
 $title = "menu_restaurant";
 require ('header.php');
 require ('technique/traite.php');
