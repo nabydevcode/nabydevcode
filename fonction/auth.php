@@ -7,8 +7,6 @@ function is_connecte(): bool
     }
     return !empty($_SESSION['ouvert']);
 }
-
-
 function force_connecter_utilisateur(): void
 {
     if (!is_connecte()) {

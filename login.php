@@ -5,12 +5,12 @@ require_once ('header.php');
 require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
 $error = "";
-if (!empty($_POST['emails']) && !empty($_POST['password'])) {
-    if ($_POST['emails'] === 'toure@gmail.com' && $_POST['password'] === 'toure') {
+$bonjour = password_hash($_POST['password'], PASSWORD_ARGON2I);
+if (!empty($_POST['emails']) && password_verify('toure', $bonjour)) {
 
+    if ($_POST['emails'] === 'toure@gmail.com' && $_POST['password'] === 'toure') {
         $_SESSION['ouvert'] = 1;
         header('Location:/generale.php');
-
     } else {
         $error = " vos donnés ne sont pas correctes ";
     }
@@ -19,9 +19,7 @@ if (!empty($_POST['emails']) && !empty($_POST['password'])) {
 <?php if (is_connecte()): ?>
     <?php header('Location:/generale.php') ?>
 <?php endif ?>
-
 <div class="container mt-3">
-
     <div class="row justify-content-center">
         <div class="col-8">
             <?php if ($error): ?>
@@ -36,7 +34,6 @@ if (!empty($_POST['emails']) && !empty($_POST['password'])) {
             </form>
         </div>
     </div>
-
 </div>
 <?php
 require_once ('footer.php');
