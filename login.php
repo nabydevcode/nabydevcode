@@ -5,10 +5,11 @@ require_once ('header.php');
 require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
 $error = "";
-$bonjour = password_hash($_POST['password'], PASSWORD_ARGON2I);
-if (!empty($_POST['emails']) && password_verify('toure', $bonjour)) {
 
-    if ($_POST['emails'] === 'toure@gmail.com' && $_POST['password'] === 'toure') {
+
+if (!empty($_POST['emails']) && !empty($_POST['password'])) {
+    $bonjour = password_hash($_POST['password'], PASSWORD_ARGON2I);
+    if ($_POST['emails'] === 'toure@gmail.com' && password_verify('toure', $bonjour)) {
         $_SESSION['ouvert'] = 1;
         header('Location:/generale.php');
     } else {
