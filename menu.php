@@ -5,9 +5,7 @@ force_connecter_utilisateur();
 $title = "menu_restaurant";
 require ('header.php');
 require ('technique/traite.php');
-
-
-
+$nombre = reuperer_les_vues();
 $fichier = __DIR__ . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'recipes.tsv';
 $data = read_csv($fichier);
 

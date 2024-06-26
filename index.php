@@ -1,5 +1,5 @@
 <?php
-require_once 'fonction/auth.php';
+require_once ('fonction/auth.php');
 force_connecter_utilisateur();
 require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
