@@ -11,7 +11,21 @@ $email = null;
 if (isset($_POST['emails']) && !empty($_POST['emails'])) {
     $email = filter_var($_POST['emails'], FILTER_VALIDATE_EMAIL);
     $file = __DIR__ . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . date('m-d-y') . '.txt';
-    file_put_contents($file, $email . PHP_EOL, FILE_APPEND);
+    $message = "";
+    if (file_exists($file)) {
+        $emal = file($file);
+        foreach ($emal as $value) {
+            if ($value === $email) {
+                $message = " ce mail est deja utiliser ";
+                break;
+            }
+
+        }
+        file_put_contents($file, $email . PHP_EOL, FILE_APPEND);
+
+    }
+
+
 
 }
 ?>
@@ -37,7 +51,13 @@ if (isset($_POST['emails']) && !empty($_POST['emails'])) {
 
             </p>
 
+            <?php if ($message): ?>
+                <div class="alert    alert-infos">
+                    <?= $message ?>
+                </div>
+            <?php endif ?>
             <?php if ($email): ?>
+
                 <div class="alert    alert-success">
                     Votre email est validé
                 </div>
