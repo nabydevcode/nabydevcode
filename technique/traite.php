@@ -53,7 +53,7 @@ if (!function_exists('selecte')) {
         $html = [];
         $k = 0;
         foreach ($options as $key => $option) {
-            $attributes = $key == $value ? 'selected' : '';
+            $attributes = $key + 1 == $value ? 'selected' : '';
             $k = $key + 1;
             $html[] = " <option  value='$k' $attributes> $option </option>";
         }
