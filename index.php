@@ -5,28 +5,24 @@ require_once ('technique/traite.php');
 $nombre = reuperer_les_vues();
 $title = "home";
 $nav = "index";
-require ('header.php');
-$error = "";
+require_once ('header.php');
+$message = "";
 $email = null;
 if (isset($_POST['emails']) && !empty($_POST['emails'])) {
     $email = filter_var($_POST['emails'], FILTER_VALIDATE_EMAIL);
     $file = __DIR__ . DIRECTORY_SEPARATOR . 'cli' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . date('m-d-y') . '.txt';
-    $message = "";
     if (file_exists($file)) {
-        $emal = file($file);
-        foreach ($emal as $value) {
-            if ($value === $email) {
-                $message = " ce mail est deja utiliser ";
-                break;
-            }
-
+        $emails_in_file = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if (in_array($email, $emails_in_file)) {
+            $message = " Cet email est deja utiliser";
+        } else {
+            file_put_contents($file, $email . PHP_EOL, FILE_APPEND);
+            $message = "Email ajouter avec success";
         }
+    } else {
         file_put_contents($file, $email . PHP_EOL, FILE_APPEND);
-
+        $message = "Nouveau fichier creer avec cet E-mail";
     }
-
-
-
 }
 ?>
 <div class="container">
@@ -47,23 +43,14 @@ if (isset($_POST['emails']) && !empty($_POST['emails'])) {
                 earum
                 placeat deleniti! Ullam, officia. Debitis maiores eligendi molestiae a laudantium dolores iste ut modi
                 repellendus.
-
-
             </p>
-
-            <?php if ($message): ?>
-                <div class="alert    alert-infos">
+            <?php if (!$message): ?>
+                <div class="alert alert-warning">
                     <?= $message ?>
                 </div>
-            <?php endif ?>
-            <?php if ($email): ?>
-
-                <div class="alert    alert-success">
-                    Votre email est validé
-                </div>
             <?php else: ?>
-                <div class="alert  alert-danger">
-                    Votre email est validé
+                <div class="alert alert-success">
+                    <?= $message ?>
                 </div>
             <?php endif ?>
             <form action="" method="POST">
@@ -73,14 +60,11 @@ if (isset($_POST['emails']) && !empty($_POST['emails'])) {
         </div>
     </div>
 </div>
-
-
 <footer class="footer mt-auto py-3 bg-body-tertiary">
     <div class="container">
         <span class="text-body-secondary">Place sticky footer content here.</span>
     </div>
-    <?php
-
-    require ('footer.php');
-
-    ?>
+</footer>
+<?php
+require ('footer.php');
+?>
