@@ -44,8 +44,6 @@ if (!function_exists('radio')) {
        HTML;
     }
 }
-
-
 //generer un formulaire select
 if (!function_exists('selecte')) {
     function selecte(string $name, $value, array $options)
